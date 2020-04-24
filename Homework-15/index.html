@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW-15_Igor_Petkovski</title>
+</head>
+<body>
+    <div class="container">
+
+    </div>
+
+    <script>
+
+        var container = document.querySelector('.container');
+
+        var label = document.createElement('h1')
+        label.textContent = 'My shopping list'
+
+        var enterItem = document.createElement('p')
+        enterItem.textContent = 'Enter a new item:'
+
+        var inputElement = document.createElement('input');
+        inputElement.setAttribute('type', 'text');
+
+        var myButton = document.createElement('button');
+        myButton.setAttribute('type', 'button');
+        myButton.textContent = "Add item";
+        myButton.addEventListener('click', addItem)
+
+        container.appendChild(label);
+        container.appendChild(enterItem);
+        container.appendChild(inputElement);
+        container.appendChild(myButton);
+
+        function addItem() {
+              var items = document.createElement ('li');
+                items.textContent = inputElement.value;
+                container.appendChild(items)
+
+        }
+
+        console.log (container);
+
+
+
+    </script>
+</body>
+</html>
