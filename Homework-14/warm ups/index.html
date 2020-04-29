@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warm ups</title>
+</head>
+<body>
+    <script>
+/*
+********************************************************************
+Warm up 1
+*/
+// Create a loop that will count in console from 1 to 100
+for (var i = 1; i <= 100; i++) {
+    console.log(i);
+}
+
+
+//********************************************************************
+//Warm up 2
+
+// Create array from words
+// [0] => This 
+// [1] => is
+// [2] => an
+// [3] => amazing
+// [4] => sentence
+// use for loop to print this array as single sentence to console, the sentence should end with dot(.)
+// Result should be "This is an amaizing sentence."
+
+var sentence = " ";
+var wordsArray = ['This', 'is', 'an', 'amazing', 'sentence'];
+
+for (var i = 0; i < wordsArray.length; i++) {
+    if (i === wordsArray.length - 1) { 
+        sentence += wordsArray[i] + '.';
+    } else {
+        sentence += wordsArray[i] + " ";
+    }
+}
+console.log(sentence);
+
+//Warm up 3
+
+// Create a function which will return a sum of given array (elements are only primitives - no nested arrays or objects in given array allowed)
+// Function should loop through array
+// Shall skip if array item is string, null or undefined ( use "continue" statement)
+// Shall return a sum of only numbers in array
+
+// var myArray = [null, 0, 1, 2, "five", "six", 3, 4, undefined, 5, 7]
+// Result should be 22
+
+
+var myArray = [null, 0, 1, 2, "five", "six", 3, 4, undefined, 5, 7];
+var result = 0;
+
+function sumNumbersFromArray() {
+    for (var i = 0; i < myArray.length; i++) {
+        if (typeof(myArray[i]) !== 'number') {
+            continue;
+        } else {
+            result += myArray[i];
+        }
+    }
+}
+sumNumbersFromArray();
+console.log(result);
+
+
+
+    </script>
+</body>
+</html>
