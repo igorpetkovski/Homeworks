@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW-18-01-Igor_Petkovski</title>
+</head>
+<body>
+    <script>
+  /*   1) Write a JavaScript function currentDate(separator) to get the current date,
+ date separator is passed as function parameter, if not passed return default ("/")
+
+console.log(currentDate()); // result: "28/04/2020"
+console.log(currentDate('-')); // result: "28-04-2020"
+console.log(currentDate('|')); // result: "28|04|2020"
+*/
+function currentDate(separator) {
+  var today = new Date();
+            var date = today.getDate();
+            var month = today.getMonth()+1;
+            var year = today.getFullYear();
+
+            if (separator) {
+                return date + separator + month + separator + year;
+            } else {
+                return date + "/" + month + "/" + year;
+            }
+}
+
+console.log(currentDate());
+      console.log(currentDate('-'));
+      console.log(currentDate('|'));
+
+//2) Write a JavaScript getDaysInMonth() function to get the number of days in a month.
+//console.log(getDaysInMonth(4, 2020)); // Result: 30
+
+function getDaysInMonth(month, year) {
+  return new Date(year, month, 0).getDate();
+}
+  console.log("Number of days in April is: " + getDaysInMonth(4, 2020))
+
+//3) Write a JavaScript function to get the month name from a particular date
+//console.log(month_name(new Date("10/11/2020"))); // October
+
+var monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
+        function month_name(month, day, year) {
+            return monthNames[month.getMonth()];
+        }
+    console.log("The month is: " + month_name(new Date("10/11/2020")));    
+    console.log("The month is: " + month_name(new Date("4/7/1998")));
+
+//4) Write a JavaScript function isWeekend() to test whether a date is a weekend.
+//console.log(isWeekend('Apr 26, 2020')); // Is Weekend
+
+function isWeekend(dateString) {
+  var date = new Date(dateString);
+  var someday = date.getDay();
+  var message = someday === 6 || someday === 0 ? 'Is Weekend' : "Is not weekend!";
+    return message
+}
+
+console.log("April 30 2020 " + isWeekend('Apr 30, 2020'));
+console.log("April 26 2020 " + isWeekend('Apr 26, 2020'));
+
+//5) Write a JavaScript date_diff_indays() function to get difference between two dates in days.
+//console.log(date_diff_indays('04/02/2014', '11/04/2014')); // 216 days
+
+function date_diff_indays(date1, date2) {
+  var diff = Math.abs((new Date(date1) - new Date(date2)) / 24/60/60/1000);
+    return Math.floor(diff);
+}
+console.log("Days between two dates: " + date_diff_indays('04/02/2014', '11/04/2014'));
+
+//6) Write a JavaScript function lastday() to get the last day of a month.
+//console.log(lastday(2014,11)); // 31
+
+function lastday(year, month) {
+  return new Date(year, month, 0).getDate();
+}
+
+console.log("Last day of month is: " + lastday(2014,11));
+
+//7) Write a JavaScript function to get the maximum date from an array of dates.
+//var dates = ["1/1/2020", "10/4/2020", "7/5/2019" "1/6/2020", "31/8/2020", "9/9/2020", "12/12/2021", "15/10/2019"];
+//console.log(maxDate(dates)); // Result 12/12/2021
+
+var dates = ["1/1/2020", "10/4/2020", "7/5/2019", "1/6/2020", "31/8/2020", "9/9/2020", "12/12/2021", "15/10/2019"];
+
+function maxDate(dates) {
+  var highestDate = dates[0];
+
+  fullTime = new Date(dates[0]);
+
+  dates.forEach(function(date, index) {
+    if ( new Date(date) > fullTime) {
+      highestDate = date;
+      fullTime = new Date(date);
+    }
+  });
+  return highestDate;
+
+}
+console.log("Max date is: " + maxDate(dates));
+
+//Write a myMap() function that takes two parameters: myArray and callback
+//Here myArray is array of numbers and callback is a function that takes the elemetns 
+//of myArray as its parameters and return:
+//1) incrmenet array element by 1
+//2) doubles each array element
+//3) squares each array element
+
+myArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+function myMap(arr, callback) {
+  printArray = [];
+  for ( var i=0; i<arr.length; i++ ) {
+    if (typeof callback === "function") {
+      callback(arr[i]);
+    }
+  }
+  console.log(printArray);
+}
+
+myMap(myArray, function (increments) {
+  printArray.push(increments + 1);
+});
+myMap(myArray, function (dobules) {
+  printArray.push(dobules*2);
+});
+myMap(myArray, function (squares) {
+  printArray.push(squares**2);
+});
+
+
+    </script>
+</body>
+</html>
